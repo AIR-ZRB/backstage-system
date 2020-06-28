@@ -1,24 +1,27 @@
-# vue-backgroundsystem
+## 后台管理系统
 
-## Project setup
-```
-yarn install
-```
+前端环境搭建：
++ Vue-Cli
++ Vue
++ Vue-Router
++ axios
++ elementui
++ scss
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+后端环境搭建：
++ express
++ MySql
 
-### Compiles and minifies for production
-```
-yarn build
-```
+软件测试：
++ postman
 
-### Lints and fixes files
-```
-yarn lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## 功能模块
+
+### login功能
+
+创建git分支：`git checkout -b login`
+
+查看git分支：`git branch`
