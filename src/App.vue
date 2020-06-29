@@ -1,17 +1,21 @@
 <template>
-  <div class="index" id="app">
-    <el-input v-model="input" placeholder="请输入内容"></el-input>
+  <div id="app">
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-
+	data(){
+		return {
+			// 后台接口的地址
+			address: "http://localhost:3000/"
+		}
+		
+	}
 }
 </script>
 
 <style lang="scss">
-.index {
-  background: red;
-}
+
 </style>

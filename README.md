@@ -11,6 +11,7 @@
 后端环境搭建：
 + express
 + MySql
++ jsonwebtoken
 
 软件测试：
 + postman

@@ -7,15 +7,17 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI)
 
-import router from "./router/router"
 
+// 路由
+import router from "./router/router";
 
-// import axios from "axios"
+// 全局样式
+import "./assets/css/global.css";
 
-
-
-
-
+// 数据请求
+import Axios from "axios";
+import VueAxios from "vue-axios";
+Vue.use(VueAxios,Axios);
 
 
 new Vue({
