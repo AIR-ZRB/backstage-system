@@ -49,6 +49,18 @@
 
 
 
+## 无关紧要的报错
+路由跳转的时候报错`Avoided redundant navigation to current location`
+解决方法：添加以下代码即可解决
+```js
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+```
+
+
+
 
 
 

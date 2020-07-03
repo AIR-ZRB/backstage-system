@@ -16,6 +16,11 @@ import "./assets/css/global.css";
 import "./assets/css/theme-green.css";
 
 
+
+// 图片预览插件
+
+
+
 // 数据请求
 import Axios from "axios";
 import VueAxios from "vue-axios";

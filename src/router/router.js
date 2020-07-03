@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 import login from "../views/login.vue";
 import home from "../views/home.vue";
 import user from "../views/user.vue";
+import picture from "../views/picture.vue";
 
 const router = new VueRouter({
     routes: [
@@ -17,6 +18,10 @@ const router = new VueRouter({
                 {
                     path: "user",
                     component: user,
+                },
+                {
+                    path: "picture",
+                    component: picture,
                 },
             ],
         },
@@ -31,5 +36,12 @@ router.beforeEach((to, from, next) => {
     const token = window.sessionStorage.getItem("token");
     token ? next() : router.push("/login");
 });
+
+const originalPush = VueRouter.prototype.push
+   VueRouter.prototype.push = function push(location) {
+   return originalPush.call(this, location).catch(err => err)
+}
+
+
 
 export default router;
