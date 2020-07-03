@@ -13,14 +13,28 @@ import router from "./router/router";
 
 // 全局样式
 import "./assets/css/global.css";
+import "./assets/css/theme-green.css";
+
 
 // 数据请求
 import Axios from "axios";
 import VueAxios from "vue-axios";
 Vue.use(VueAxios,Axios);
 
+Axios.defaults.baseURL='http://localhost:3000/';
+Axios.interceptors.request.use(config => {
+
+  // config.headers.Authorization = window.sessionStorage.getItem("token");
+  // console.log(config)
+  return config;
+
+})
+
 
 new Vue({
+  data: {
+    address: "213123"
+  },
   router,
   render: h => h(App),
 }).$mount('#app')

@@ -19,7 +19,7 @@
 				</p>
 			</div>
 			
-			<!-- 登<strong></strong>录按钮 -->
+			<!-- 登录按钮 -->
 			<div class="login-button">
 				<button @click="login">Submit</button>
 			</div>
@@ -38,14 +38,14 @@ export default {
 	},
 	methods: {
 		login(){
-			this.axios.post("http://localhost:3000/login",{
+			this.axios.post("/login",{
 				username: this.userName,
 				password: this.passWord				
 			})
 			.then((data)=>{
 				if(data.data) {
 					window.sessionStorage.setItem("token",data.data);
-					this.$router.push("/index");
+					this.$router.push("/home");
 				}else {
 					this.$message.error('账号或者密码错误');
 				}
