@@ -26,9 +26,11 @@
 
 
 合并git分支：
-1. 先切换到主分支`git checkout master`
-2. 再合并分支`git marge login`
-3. 提交`git push -u origin login`，这样就把`login`分支上传到远程仓库中了
+1. 先在子分支`git checkout login`
+2. 提交代码`git commit -am "commit"`
+3. 切换回主分支`git checkout master`
+4. 再合并分支`git marge login`
+5. 提交`git push -u origin login`，这样就把`login`分支上传到远程仓库中了
 
 
 
