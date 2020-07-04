@@ -6,6 +6,9 @@ import login from "../views/login.vue";
 import home from "../views/home.vue";
 import user from "../views/user.vue";
 import picture from "../views/picture.vue";
+import index from "../views/index.vue";
+import setting from "../views/setting.vue";
+import rests from "../views/rests.vue";
 
 const router = new VueRouter({
     routes: [
@@ -23,6 +26,19 @@ const router = new VueRouter({
                     path: "picture",
                     component: picture,
                 },
+                {
+                    path: "rests",
+                    component: rests,
+                },
+                {
+                    path: "setting",
+                    component: setting,
+                },
+                {
+                    path: "index",
+                    component: index,
+                },
+
             ],
         },
     ],

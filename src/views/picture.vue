@@ -2,7 +2,14 @@
     <div class="picture-page">
         <h2>图片预览</h2>
         <div class="button-group">
-            <el-button>上传图片</el-button>
+            <el-button>上传</el-button>
+            <input
+                type="file"
+                value="上传"
+                class="uploading"
+                @change="uploading"
+                ref="fileInput"
+            />
         </div>
         <div class="picture-group" @click="previewPicture">
             <div class="picture-item" v-for="item in pictureUrl" :key="item">
@@ -41,11 +48,23 @@ export default {
         },
         getPictureUrl() {
             this.axios.get("/getPictureUrl").then((data) => {
-                data.data.forEach((item,index) => {
+                data.data.forEach((item, index) => {
                     index <= 20 ? this.pictureUrl.push(item) : null;
                     // this.pictureUrl.push(item);
                 });
             });
+        },
+        uploading() {
+            let _this = this;
+            let reads = new FileReader();
+            let file = this.$refs.fileInput.files[0];
+            reads.readAsDataURL(file);
+            reads.onloadend = function(event) {
+                _this.axios.post(`/uploading/${file.name}`, {
+                    fileName: file.name,
+                    body: event.target.result,
+                });
+            };
         },
     },
     created() {
@@ -59,16 +78,28 @@ export default {
     padding-right: 10px;
     .button-group {
         margin: 20px 0;
+        position: relative;
+
         .el-button {
             background: var(--theme-color);
             color: var(--theme-text-color);
+            cursor: pointer;
+        }
+        .uploading {
+            position: absolute;
+            width: 70px;
+            height: 40px;
+            opacity: 0;
+            top: 0;
+            left: 0;
+            cursor: pointer;
         }
     }
 
     .picture-group {
         width: 100%;
-        column-count: 4;
-        column-gap: 10px;
+        column-count: 3;
+        column-gap: 20px;
 
         .picture-item {
             img {

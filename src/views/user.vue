@@ -1,7 +1,10 @@
 <template>
     <div class="user-page">
+        <h2>用户信息</h2>
 
-      <h2>用户信息</h2>
+        <div class="button-group">
+            <el-button @click="()=>this.newUserIsShow = true">新建用户</el-button>
+        </div>
 
         <el-table :data="tableData" border>
             <el-table-column
@@ -9,7 +12,7 @@
                 :key="item"
                 :prop="item"
                 :label="item"
-                width="180"
+                width="200"
             >
             </el-table-column>
             <el-table-column label="操作">
@@ -24,16 +27,23 @@
                 </template>
             </el-table-column>
         </el-table>
+        <createUser :newUserIsShow.sync="newUserIsShow"/>
+
     </div>
 </template>
 
 <script>
+import createUser from "../components/createUser.vue";
 export default {
     data() {
         return {
             tableData: [], // 获取表格里的数据
             tableTitle: [], // 获取表格里的标题
+            newUserIsShow: false
         };
+    },
+    components: {
+        createUser
     },
     methods: {
         getUserMessage() {
@@ -58,18 +68,32 @@ export default {
 </script>
 
 <style lang="scss">
-  .user-page {
+.user-page {
     h2 {
-      margin-bottom: 30px;
+        margin-bottom: 30px;
     }
-    .el-button {
-      background: var(--theme-color);
-      color: #fff;
-      padding: 10px 10px;
 
-      &:last-child {
-        background: var(--theme-danger);
-      }
+    .button-group {
+        margin: 20px 0;
+        position: relative;
+
+        .el-button {
+            background: var(--theme-color);
+            color: var(--theme-text-color);
+            cursor: pointer;
+        }
     }
-  }
+
+    .el-table {
+        .el-button {
+            background: var(--theme-color);
+            color: #fff;
+            padding: 10px 10px;
+
+            &:last-child {
+                background: var(--theme-danger);
+            }
+        }
+    }
+}
 </style>

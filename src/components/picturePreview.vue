@@ -33,8 +33,8 @@ export default {
             const imgDom = this.$refs.currentPicture;
 
             imageWidth > imageHeight
-                ? (imgDom.style.width = `${screenWidth - 100}px`)
-                : (imgDom.style.height = `${screenHeight - 100}px`);
+                ? (imgDom.style.width = `${screenWidth - 20}px`)
+                : (imgDom.style.height = `${screenHeight - 20}px`);
         },
     },
     updated() {
@@ -50,7 +50,7 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     display: flex;
     justify-content: center;
     align-items: center;
