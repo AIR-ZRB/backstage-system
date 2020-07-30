@@ -35,10 +35,9 @@ Axios.interceptors.request.use(config => {
 
 })
 
-
 new Vue({
   data: {
-    address: "213123"
+    theme: ""
   },
   router,
   render: h => h(App),

@@ -11,6 +11,7 @@ import setting from "../views/setting.vue";
 import rests from "../views/rests.vue";
 
 const router = new VueRouter({
+    mode: "hash",   
     routes: [
         { path: "/", redirect: "/login" },
         { path: "/login", component: login },
