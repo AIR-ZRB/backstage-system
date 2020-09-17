@@ -12,7 +12,6 @@ export default {
 			// 后台接口的地址
 			address: "http://localhost:3000/"
 		}
-		
 	}
 }
 </script>

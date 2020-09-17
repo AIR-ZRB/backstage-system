@@ -58,6 +58,7 @@ export default {
             let _this = this;
             let reads = new FileReader();
             let file = this.$refs.fileInput.files[0];
+            console.log(file)
             reads.readAsDataURL(file);
             reads.onloadend = function(event) {
                 _this.axios.post(`/uploading/${file.name}`, {
