@@ -4,7 +4,6 @@
 
         <div class="setting-box">
             <div class="setting-item">
-
                 <p>主题色</p>
 
                 <el-dropdown>
@@ -48,19 +47,15 @@ export default {
         };
     },
     methods: {
-        editTheme(theme) {
+        async editTheme(theme) {
             this.theme.currentTheme = theme.cnName;
             this.$root.theme = theme.enName;
 
-            let newLink = document.createElement("link");
-            newLink.setAttribute("rel", "stylesheet");
-            newLink.setAttribute("type", "text/css");
-            newLink.setAttribute(
-                "href",
-                `/assets/css/theme-${theme.enName}.css`
-            );
-
-            document.head.appendChild(newLink);
+            // 主题色
+            const LinkCss = document.getElementById("theme");
+            fetch(`/css/theme-${theme.enName}.css`)
+                .then((res) => res.text())
+                .then((data) => (LinkCss.innerHTML = data));
         },
     },
 };

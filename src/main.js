@@ -12,8 +12,7 @@ Vue.use(ElementUI)
 import router from "./router/router";
 
 // 全局样式
-import "@/assets/css/global.css";
-import "@/assets/css/theme-green.css";
+// import "@/assets/css/theme-green.css";
 
 // 数据请求
 import Axios from "axios";
