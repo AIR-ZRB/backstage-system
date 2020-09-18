@@ -2,44 +2,37 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
-import login from "../views/login.vue";
-import home from "../views/home.vue";
-import user from "../views/user.vue";
-import picture from "../views/picture.vue";
-import index from "../views/index.vue";
-import setting from "../views/setting.vue";
-import rests from "../views/rests.vue";
-
+import login from "@/views/login.vue";
 const router = new VueRouter({
-    mode: "hash",   
+    mode: "hash",
     routes: [
         { path: "/", redirect: "/login" },
         { path: "/login", component: login },
         {
-            path: "/home",
-            component: home,
+            path: "/backstage",
+            redirect: "/backstage/index",
+            component: () => import("@/views/backstage.vue"),
             children: [
                 {
+                    path: "index",
+                    component: () => import("@/views/index.vue"),
+                },
+                {
                     path: "user",
-                    component: user,
+                    component: () => import("@/views/user.vue"),
                 },
                 {
                     path: "picture",
-                    component: picture,
+                    component: () => import("@/views/picture.vue"),
                 },
                 {
                     path: "rests",
-                    component: rests,
+                    component: () => import("@/views/rests.vue"),
                 },
                 {
                     path: "setting",
-                    component: setting,
+                    component: () => import("@/views/setting.vue"),
                 },
-                {
-                    path: "index",
-                    component: index,
-                },
-
             ],
         },
     ],
@@ -54,11 +47,9 @@ router.beforeEach((to, from, next) => {
     token ? next() : router.push("/login");
 });
 
-const originalPush = VueRouter.prototype.push
-   VueRouter.prototype.push = function push(location) {
-   return originalPush.call(this, location).catch(err => err)
-}
-
-
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch((err) => err);
+};
 
 export default router;

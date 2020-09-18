@@ -42,7 +42,7 @@ export default {
 
             if (data.data) {
                 window.sessionStorage.setItem("token", data.data);
-                this.$router.push("/home");
+                this.$router.push("/backstage");
                 this.$message.success("登录成功");
             } else {
                 this.$message.error("账号或者密码错误");

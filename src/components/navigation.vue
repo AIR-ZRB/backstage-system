@@ -5,7 +5,7 @@
                 <el-menu-item
                     v-for="item in _props.menuList"
                     :key="item.path"
-                    :index="'/home/'+item.path"
+                    :index="'/backstage/'+item.path"
                 >
                     <template>
                         <i :class="listIcons[item.path]"></i>
