@@ -1,36 +1,25 @@
 <template>
     <div class="login-container">
         <div class="login-box">
-            <h1>Login</h1>
+            <h1>Welcome</h1>
 
             <!-- 输入框 -->
             <div method="post" class="login-input">
-                <p>
-                    <label for="username">
-                        <img src="../assets/icons/username.png" alt="" />
-                    </label>
-                    <input
-                        type="text"
-                        placeholder="username"
-                        v-model="userName"
-                    />
-                </p>
-                <p>
-                    <label for="password">
-                        <img src="../assets/icons/password.png" alt="" />
-                    </label>
-                    <input
-                        type="password"
-                        placeholder="password"
-                        v-model="passWord"
-                        @keydown.enter="login"
-                    />
-                </p>
+                <p>Email</p>
+                <input type="text" v-model="userName" />
+
+                <p>Password</p>
+                <input
+                    type="password"
+                    v-model="passWord"
+                    @keydown.enter="login"
+                />
             </div>
 
             <!-- 登录按钮 -->
             <div class="login-button">
-                <button @click="login">Submit</button>
+                <a href="https://github.com/AIR-ZRB/backstage-system">前往Github</a>
+                <button @click="login">Sign In</button>
             </div>
         </div>
     </div>
@@ -67,39 +56,35 @@ export default {
 .login-container {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    @include flex-layout(center, center);
     background-image: url(../assets/picture/login_background.jpg);
     background-size: 100% 100%;
 
     .login-box {
-        width: 400px;
-        height: 400px;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 20px;
-        padding: 20px;
+        box-sizing: border-box;
+        background: rgba(0, 0, 0, 0.1);
+        padding: 20px 30px;
+        width: 30%;
 
         h1 {
             color: #fff;
-            text-align: center;
-            font-size: 46px;
+            // text-align: center;
+            font-size: 40px;
         }
 
         // 页面的输入框
         .login-input {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 50px;
+            // width: 40%;
+            @include flex-layout(none, center, wrap);
+            margin-top: 30px;
 
             p {
-                // width: 100%;
-                display: flex;
-                align-items: center;
-                height: 70px;
+                width: 100%;
+                font-weight: 700;
+                color: #fff;
+                @include flex-layout(none, center);
+                // margin-top: 10px;
             }
 
             img {
@@ -109,10 +94,11 @@ export default {
             }
             input {
                 border: 0;
-                width: 80%;
+                width: 100%;
                 height: 40px;
-                font-size: 24px;
-                padding: 0 10px;
+                font-size: 20px;
+                // padding: 0 10px;
+                margin: 0 0 20px 0;
                 border-bottom: 1px solid #fff;
                 background: transparent;
                 color: #fff;
@@ -123,20 +109,24 @@ export default {
         // 提交按钮
         .login-button {
             width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-top: 50px;
+            margin-top: 30px;
+            @include flex-layout(space-between, center);
+
+			a {
+				color: #fff;
+			}
+
             button {
-                width: 40%;
-                height: 50px;
                 border: 0;
-                border-radius: 25px;
-                background-image: linear-gradient(to right, #ccfbff, #ef96c5);
                 outline: none;
                 cursor: pointer;
-                font-size: 24px;
+                font-size: 18px;
                 font-weight: 700;
                 color: #fff;
+                background: transparent;
+                padding: 10px 20px;
+                border: 1px solid #fff;
+                border-radius: 50px;
             }
         }
     }
