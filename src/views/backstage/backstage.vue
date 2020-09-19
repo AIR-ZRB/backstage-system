@@ -4,7 +4,7 @@
             <p>青空后台管理系统</p>
         </el-header>
         <el-container>
-            <el-aside width="200px">
+            <el-aside width="auto">
                 <!-- 左边侧边栏 -->
                 <el-row class="tac">
                     <el-col>
@@ -13,12 +13,22 @@
                             class="el-menu-vertical-demo"
                             active-text-color="var(--color-light)"
                             :router="true"
+                            :collapse="minimize"
                         >
                             <navigation
                                 v-for="item in menuList"
                                 :key="item.path"
                                 :item="item"
                             />
+
+                            <el-menu-item
+                                @click="() => (this.minimize = !this.minimize)"
+                            >
+                                <template>
+                                    <i class="el-icon-magic-stick"></i>
+                                    <span slot="title">最小化菜单</span>
+                                </template>
+                            </el-menu-item>
                         </el-menu>
                     </el-col>
                 </el-row>
@@ -33,11 +43,12 @@
 </template>
 
 <script>
-import navigation from "../components/navigation.vue";
+import navigation from "./navigation.vue";
 export default {
     data() {
         return {
             defaultActive: "/home/index",
+            minimize: false,
             // 列表数据
             menuList: [
                 {
@@ -53,12 +64,12 @@ export default {
                     icon: "el-icon-shopping-cart-1",
                     children: [
                         {
-                            id: 31,
+                            id: 21,
                             listName: "主会场",
                             path: "video",
                         },
                         {
-                            id: 32,
+                            id: 22,
                             listName: "限时秒杀",
                             path: "file",
                         },
@@ -127,7 +138,12 @@ export default {
         color: #fff;
     }
 }
-
+.el-aside {
+    width: auto;
+}
+.el-menu-item {
+    width: 200px;
+}
 .el-menu-vertical-demo {
     border: 0;
 }

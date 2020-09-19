@@ -58,7 +58,7 @@ export default {
             let _this = this;
             let reads = new FileReader();
             let file = this.$refs.fileInput.files[0];
-            console.log(file)
+            console.log(file);
             reads.readAsDataURL(file);
             reads.onloadend = function(event) {
                 _this.axios.post(`/uploading/${file.name}`, {
@@ -106,6 +106,7 @@ export default {
             img {
                 width: 400px;
                 cursor: pointer;
+                box-shadow: #ccc 0px 0px 20px;
                 // height: 150px;
             }
         }

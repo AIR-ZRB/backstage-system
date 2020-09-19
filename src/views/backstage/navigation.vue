@@ -13,8 +13,10 @@
                 v-for="childrenItem in _props.item.children"
                 :index="childrenItem.path"
                 :key="childrenItem.path"
-                >{{ childrenItem.listName }}</el-menu-item
             >
+                <i :class="childrenItem.icon"></i>
+                <span>{{ childrenItem.listName }}</span>
+            </el-menu-item>
         </el-menu-item-group>
     </el-submenu>
 

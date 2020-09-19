@@ -11,7 +11,7 @@ const router = new VueRouter({
         {
             path: "/backstage",
             redirect: "/backstage/index",
-            component: () => import("@/views/backstage.vue"),
+            component: () => import("@/views/backstage/backstage.vue"),
             children: [
                 {
                     path: "index",

@@ -62,8 +62,8 @@ export default {
 
 <style lang="scss" scoped>
 .setting-item {
-    padding: 10px 0;
+    padding: 5px 0;
     border-bottom: 1px solid $theme-color;
-    @include flex-layout(space-between);
+    @include flex-layout(space-between,center);
 }
 </style>
