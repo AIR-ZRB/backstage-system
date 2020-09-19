@@ -1,60 +1,46 @@
 <template>
-    <el-row class="tac">
-        <el-col>
-            <el-menu :default-active="defaultActive" class="el-menu-vertical-demo" active-text-color="var(--color-light)"  :router="true"> 
-                <el-menu-item
-                    v-for="item in _props.menuList"
-                    :key="item.path"
-                    :index="'/backstage/'+item.path"
-                >
-                    <template>
-                        <i :class="listIcons[item.path]"></i>
-                        <span slot="title">{{ item.listName }}</span>
-                    </template>
-                </el-menu-item>
+    <!-- 有二级菜单的,可以想想怎么修改成二级菜单 -->
+    <el-submenu
+        :index="'/backstage/' + _props.item.path"
+        v-if="_props.item.children"
+    >
+        <template slot="title">
+            <i :class="_props.item.icon"></i>
+            <span slot="title">{{ item.listName }}</span>
+        </template>
+        <el-menu-item-group>
+            <el-menu-item
+                v-for="childrenItem in _props.item.children"
+                :index="childrenItem.path"
+                :key="childrenItem.path"
+                >{{ childrenItem.listName }}</el-menu-item
+            >
+        </el-menu-item-group>
+    </el-submenu>
 
-                <!-- 有二级菜单的,可以想想怎么修改成二级菜单 -->
-                <!-- <el-submenu index="1" v-if="item.children">
-                    <template>
-                        <i :class="listIcons[item.path]"></i>
-                        <span slot="title">{{ item.listName }}</span>
-                    </template>
-                    <el-menu-item-group>
-                        <el-menu-item
-                            :index="childrenItem.path"
-                            v-for="childrenItem in item.children"
-                            :key="childrenItem.path"
-                            >{{ childrenItem.listName }}</el-menu-item
-                        >
-                    </el-menu-item-group>
-                </el-submenu> -->
-            </el-menu>
-        </el-col>
-    </el-row>
+    <!-- 一级菜单 -->
+    <el-menu-item :index="'/backstage/' + _props.item.path" v-else>
+        <template>
+            <i :class="_props.item.icon"></i>
+            <span slot="title">{{ item.listName }}</span>
+        </template>
+    </el-menu-item>
 </template>
 
 <script>
 export default {
-    props: ["menuList"],
+    props: ["item"],
     data() {
-        return {
-            // 列表对应的图标
-            listIcons: {
-                index: "el-icon-monitor",
-                setting: "el-icon-setting",
-                picture: "el-icon-picture-outline",
-                file: "el-icon-files",
-                video: "el-icon-video-camera",
-                rests: "el-icon-s-fold",
-                user: "el-icon-user",
-            },
-            defaultActive: "/home/index"
-        };
+        return {};
     },
-    created(){
+    created() {
         this.defaultActive = this.$route.fullPath;
-    }
+    },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.el-menu-item-group__title {
+    padding: 0;
+}
+</style>
