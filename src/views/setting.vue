@@ -5,7 +5,6 @@
         <div class="setting-box">
             <div class="setting-item">
                 <p>主题色</p>
-
                 <el-dropdown>
                     <span class="el-dropdown-link">
                         <span>{{ theme.currentTheme }}</span>
@@ -61,11 +60,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .setting-item {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--theme-color);
-    display: flex;
-    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid $theme-color;
+    @include flex-layout(space-between);
 }
 </style>

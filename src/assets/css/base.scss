@@ -1,20 +1,10 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    --theme-danger: #F56C6C
+    --theme-danger: #f56c6c;
 }
-
-html,
-body,
-#app {
-    width: 100%;
-    height: 100%;
-}
-
-
-
-
+$theme-color: #54C67D;
+$theme-light-color: #3BBA7D;
+$theme-text-color: #fff;
 
 @mixin flex-layout($x: none, $y: none, $wrap: none) {
     display: flex;
