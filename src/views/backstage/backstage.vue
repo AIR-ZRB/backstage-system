@@ -1,7 +1,7 @@
 <template>
     <el-container class="home-index">
         <el-header>
-            <p>青空后台管理系统</p>
+            <p>Backstage</p>
         </el-header>
         <el-container>
             <el-aside width="auto">
@@ -66,12 +66,22 @@ export default {
                         {
                             id: 21,
                             listName: "主会场",
-                            path: "video",
+                            path: `shopping/main-venue`,
                         },
                         {
                             id: 22,
                             listName: "限时秒杀",
-                            path: "file",
+                            path: `shopping/second-kill`,
+                        },
+                        {
+                            id: 23,
+                            listName: "商品分类",
+                            path: `shopping/classify`,
+                        },
+                        {
+                            id: 24,
+                            listName: "全部用户",
+                            path: `shopping/all-member`,
                         },
                     ],
                 },
@@ -84,19 +94,19 @@ export default {
                         {
                             id: 31,
                             listName: "图片",
-                            path: "picture",
+                            path: `rests/picture`,
                             icon: "el-icon-picture-outline",
                         },
                         {
                             id: 32,
                             listName: "视频",
-                            path: "video",
+                            path: `rests/video`,
                             icon: "el-icon-video-camera",
                         },
                         {
                             id: 33,
                             listName: "文档",
-                            path: "file",
+                            path: `rests/file`,
                             icon: "el-icon-files",
                         },
                     ],
@@ -120,6 +130,10 @@ export default {
         navigation,
     },
     methods: {},
+    created() {
+        this.defaultActive = this.$route.fullPath;
+        console.log(this.$route);
+    },
 };
 </script>
 

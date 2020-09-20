@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import picturePreview from "../components/picturePreview";
+import picturePreview from "../../components/picturePreview";
 export default {
     data() {
         return {

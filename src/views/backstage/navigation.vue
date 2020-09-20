@@ -11,7 +11,7 @@
         <el-menu-item-group>
             <el-menu-item
                 v-for="childrenItem in _props.item.children"
-                :index="childrenItem.path"
+                :index="'/backstage/' + childrenItem.path"
                 :key="childrenItem.path"
             >
                 <i :class="childrenItem.icon"></i>
@@ -35,9 +35,7 @@ export default {
     data() {
         return {};
     },
-    created() {
-        this.defaultActive = this.$route.fullPath;
-    },
+    created() {},
 };
 </script>
 

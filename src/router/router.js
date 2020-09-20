@@ -9,6 +9,7 @@ const router = new VueRouter({
         { path: "/", redirect: "/login" },
         { path: "/login", component: login },
         {
+            name: "backstage",
             path: "/backstage",
             redirect: "/backstage/index",
             component: () => import("@/views/backstage/backstage.vue"),
@@ -22,16 +23,23 @@ const router = new VueRouter({
                     component: () => import("@/views/user.vue"),
                 },
                 {
-                    path: "picture",
-                    component: () => import("@/views/picture.vue"),
-                },
-                {
                     path: "rests",
-                    component: () => import("@/views/rests.vue"),
+                    component: () => import("@/views/rests/rests.vue"),
+                    redirect: "/backstage/rests/picture",
+                    children: [
+                        {
+                            path: "picture",
+                            component: () => import("@/views/rests/picture.vue"),
+                        },
+                    ],
                 },
                 {
                     path: "setting",
                     component: () => import("@/views/setting.vue"),
+                },
+                {
+                    path: "shopping/*",
+                    component: () => import("@/views/shopping/shopping.vue"),
                 },
             ],
         },

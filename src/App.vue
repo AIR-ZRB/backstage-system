@@ -31,4 +31,7 @@ body,
     padding: 0;
     margin: 0;
 }
+i::before {
+    font-weight: 700;
+}
 </style>
