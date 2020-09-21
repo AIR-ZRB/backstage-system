@@ -22,6 +22,14 @@ export default {
 </script>
 
 <style lang="scss">
+li {
+    list-style: none;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
 
 html,
 body,

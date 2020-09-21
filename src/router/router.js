@@ -31,6 +31,14 @@ const router = new VueRouter({
                             path: "picture",
                             component: () => import("@/views/rests/picture.vue"),
                         },
+                        {
+                            path: "video",
+                            component: () => import("@/views/rests/file.vue"),
+                        },
+                        {
+                            path: "file",
+                            component: () => import("@/views/rests/file.vue"),
+                        },
                     ],
                 },
                 {

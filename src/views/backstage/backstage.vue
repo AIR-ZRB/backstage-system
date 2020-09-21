@@ -1,39 +1,39 @@
 <template>
     <el-container class="home-index">
-        <el-header>
-            <p>Backstage</p>
-        </el-header>
-        <el-container>
-            <el-aside width="auto">
-                <!-- 左边侧边栏 -->
-                <el-row class="tac">
-                    <el-col>
-                        <el-menu
-                            :default-active="defaultActive"
-                            class="el-menu-vertical-demo"
-                            active-text-color="var(--color-light)"
-                            :router="true"
-                            :collapse="minimize"
-                        >
-                            <navigation
-                                v-for="item in menuList"
-                                :key="item.path"
-                                :item="item"
-                            />
+        <el-aside width="auto">
+            <!-- 左边侧边栏 -->
+            <el-row class="tac">
+                <el-col>
+                    <el-menu
+                        :default-active="defaultActive"
+                        class="el-menu-vertical-demo"
+                        active-text-color="var(--color-light)"
+                        :router="true"
+                        :collapse="minimize"
+                    >
+                        <navigation
+                            v-for="item in menuList"
+                            :key="item.path"
+                            :item="item"
+                        />
 
-                            <el-menu-item
-                                @click="() => (this.minimize = !this.minimize)"
-                            >
-                                <template>
-                                    <i class="el-icon-magic-stick"></i>
-                                    <span slot="title">最小化菜单</span>
-                                </template>
-                            </el-menu-item>
-                        </el-menu>
-                    </el-col>
-                </el-row>
-                <!-- --------- -->
-            </el-aside>
+                        <el-menu-item
+                            @click="() => (this.minimize = !this.minimize)"
+                        >
+                            <template>
+                                <i class="el-icon-magic-stick"></i>
+                                <span slot="title">最小化菜单</span>
+                            </template>
+                        </el-menu-item>
+                    </el-menu>
+                </el-col>
+            </el-row>
+            <!-- --------- -->
+        </el-aside>
+        <el-container>
+            <el-header>
+                <p>首页</p>
+            </el-header>
             <!-- 右边主题内容 -->
             <el-main>
                 <router-view></router-view>
@@ -48,7 +48,7 @@ export default {
     data() {
         return {
             defaultActive: "/home/index",
-            minimize: false,
+            minimize: true,
             // 列表数据
             menuList: [
                 {
@@ -142,22 +142,31 @@ export default {
     height: 100%;
 }
 .el-header {
-    // background-image: linear-gradient(to right, #eae5c9, #6cc6cb);
-    // background-color: #54C67D;
-    background: var(--theme-color);
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #F3F4F5;
     p {
-        font-size: 22px;
-        color: #fff;
+        font-weight: 700;;
+        // color: #C8D1DD; 
+        color: #CCC; 
     }
 }
 .el-aside {
     width: auto;
+    background: $theme-color;
+
+    li {
+        // width: 200px;
+        background: $theme-color;
+        i::before {
+            color: #fff;
+        }
+    }
 }
-.el-menu-item {
-    width: 200px;
-}
+
+// .el-main {
+//     padding: 10px;
+// }
 .el-menu-vertical-demo {
     border: 0;
 }
