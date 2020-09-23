@@ -1,6 +1,7 @@
 <template>
     <el-container class="home-index">
         <el-aside width="auto">
+            <img src="@/assets/picture/login_background.jpg" alt="" />
             <!-- 左边侧边栏 -->
             <el-row class="tac">
                 <el-col>
@@ -9,22 +10,13 @@
                         class="el-menu-vertical-demo"
                         active-text-color="var(--color-light)"
                         :router="true"
-                        :collapse="minimize"
+                        :collapse="true"
                     >
                         <navigation
                             v-for="item in menuList"
                             :key="item.path"
                             :item="item"
                         />
-
-                        <el-menu-item
-                            @click="() => (this.minimize = !this.minimize)"
-                        >
-                            <template>
-                                <i class="el-icon-magic-stick"></i>
-                                <span slot="title">最小化菜单</span>
-                            </template>
-                        </el-menu-item>
                     </el-menu>
                 </el-col>
             </el-row>
@@ -32,8 +24,22 @@
         </el-aside>
         <el-container>
             <el-header>
-                <p>首页</p>
+                <div class="left-menu">
+                    <!-- <i class="el-icon-s-unfold"></i> -->
+                    <i class="el-icon-position"></i>
+                    <p>Dashboard</p>
+                </div>
+
+                <div class="right-menu">
+                    <img src="@/assets/picture/login_background.jpg" alt="" />
+                </div>
             </el-header>
+            <div class="history">
+                <el-tag closable type="">
+                    index
+                </el-tag>
+            </div>
+
             <!-- 右边主题内容 -->
             <el-main>
                 <router-view></router-view>
@@ -142,18 +148,49 @@ export default {
     height: 100%;
 }
 .el-header {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #F3F4F5;
-    p {
-        font-weight: 700;;
-        // color: #C8D1DD; 
-        color: #CCC; 
+    @include flex-layout(space-between, center);
+    border-bottom: 1px solid #f3f4f5;
+    .left-menu {
+        @include flex-layout(none, center);
+        p {
+            font-size: 14px;
+            color: #97a8be;
+        }
+        i {
+            font-size: 20px;
+            display: inline-block;
+            margin-right: 15px;
+            &::before {
+                color: #97a8be;
+            }
+        }
+    }
+
+    .right-menu {
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
     }
 }
+
+.history {
+    border-bottom: 1px solid #f3f4f5;
+    height: 30px;
+    padding: 0 20px;
+}
+
 .el-aside {
     width: auto;
     background: $theme-color;
+    img {
+        width: 40px;
+        height: 40px;
+        display: block;
+        margin: 10px auto;
+        border-radius: 5px;
+    }
 
     li {
         // width: 200px;
